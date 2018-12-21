@@ -1,0 +1,63 @@
+<html>
+  <head>
+    <title>Vue Basics</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+      .one {
+        color: purple;
+      }
+      .two {
+        text-decoration: line-through;
+      }
+      .canvas {
+        width: 300px;
+        height: 300px;
+        margin-top: 20px;
+        background: grey;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Vue Basics</h1>
+    <div id="app">
+      <h2>{{ title }}</h2>
+      <p>{{ greet("evening") }}</p>
+      <a :href="url">Youtube</a>
+      <div :class="classes">Classes through binding</div>
+      <p type="text" :value="name"></p>
+      <p>I earn ${{ wage }} per hour.</p>
+      <button v-on:click="changeWage(1)">Increase wage by $1 per hour.</button>
+      <button v-on:click="changeWage(-1)">Decrease wage by $1 per hour.</button>
+      <button v-on:dblclick="changeWage(5)">
+        Increase wage by $5 per hour.
+      </button>
+      <button v-on:dblclick="changeWage(-5)">
+        Decrease wage by $5 per hour.
+      </button>
+      <button @click="logEvent(e)">Log Event Info</button>
+      <div class="canvas" @mousemove="logCoords">
+        {{ coords.x }}, {{ coords.y }}
+      </div>
+      <p>My name is {{ name }}.</p>
+      <input type="text" @keyup="updateName" />
+      <input type="text" @keypress="updateName" />
+      <input type="text" v-model="name" />
+      <button @click.alt="logMessage">alt-click me!</button>
+      <button @click.shift="logMessage">shift-click me!</button>
+      <a href="https://google.com" @click.prevent="logMessage">Google</a>
+      <p v-if="showName">Maria</p>
+      <p v-else-if="showAge">25</p>
+      <button @click="toggleName()">ShowName: {{ showName }}</button>
+      <button @click="toggleAge()">showAge: {{ showAge }}</button>
+      <ul>
+        <li v-for="item in items">{{ item }}</li>
+      </ul>
+      <div v-for="(ninja, index) in ninjas">
+        <p>{{ index }}-{{ ninja.name }}</p>
+        <p>Age: {{ ninja.age }}</p>
+        <p>Belt: {{ ninja.belt }}</p>
+      </div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
